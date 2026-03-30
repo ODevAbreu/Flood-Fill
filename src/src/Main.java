@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        BufferedImage image = carregarImagem("assets/teste2.png");
+        BufferedImage image = carregarImagem("assets/crab.png");
 
         System.out.println("Largura: " + image.getWidth() + " | Altura: " + image.getHeight());
 
@@ -24,8 +24,8 @@ public class Main {
         System.out.print("Escolha o modo (1 = Pilha / 2 = Fila): ");
         int modo = scanner.nextInt();
 
-        JFrame frame = criarJanela(image);
-        ImagePanel panel = (ImagePanel) frame.getContentPane().getComponent(0);
+
+        ImagePanel panel = new ImagePanel(image);
 
         FloodFill floodFill = new FloodFill(image, panel, x, y);
 
@@ -51,15 +51,5 @@ public class Main {
             System.exit(1);
             return null;
         }
-    }
-
-    private static JFrame criarJanela(BufferedImage imagem) {
-        ImagePanel panel = new ImagePanel(imagem);
-        JFrame frame = new JFrame("Flood Fill");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(imagem.getWidth(), imagem.getHeight());
-        frame.add(panel);
-        frame.setVisible(true);
-        return frame;
     }
 }

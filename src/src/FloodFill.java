@@ -13,10 +13,10 @@ public class FloodFill {
 
     private static final int NEW_COLOR      = 202020;
     private static final int TOLERANCE      = 30;
-    private static final int FRAME_INTERVAL = 500;
+    private static final int FRAME_INTERVAL = 10;
 
     public FloodFill(BufferedImage image, ImagePanel panel, int x, int y) {
-        if (image == null) throw new IllegalArgumentException("Image is null!");
+        if (image == null) throw new IllegalArgumentException("imagem faiada!");
         this.image      = image;
         this.panel      = panel;
         this.startPoint = new Point(x, y);
@@ -30,7 +30,7 @@ public class FloodFill {
         runFill(new Queue<>());
     }
 
-    // Único algoritmo — comportamento muda conforme Stack (DFS) ou Queue (BFS)
+
     private void runFill(Collection<Point> collection) throws InterruptedException {
         int oldColor = image.getRGB(startPoint.x, startPoint.y);
         if (oldColor == NEW_COLOR) return;
@@ -50,8 +50,8 @@ public class FloodFill {
             if (isColorDifferent(image.getRGB(p.x, p.y), oldColor)) continue;
 
             image.setRGB(p.x, p.y, NEW_COLOR);
-            panel.repaint();
-            Thread.sleep(1);
+//            panel.repaint();
+//            Thread.sleep(1);
             painted++;
 
             // Salva frame a cada FRAME_INTERVAL pixels pintados
@@ -70,7 +70,7 @@ public class FloodFill {
         panel.playAnimation();
     }
 
-    // Retorna true quando as cores são suficientemente diferentes (fora da tolerância)
+
     private boolean isColorDifferent(int color1, int color2) {
         int r = Math.abs(((color1 >> 16) & 0xFF) - ((color2 >> 16) & 0xFF));
         int g = Math.abs(((color1 >> 8)  & 0xFF) - ((color2 >> 8)  & 0xFF));

@@ -19,7 +19,7 @@ public class ImagePanel extends JPanel {
         repaint();
     }
 
-    // Exibe a animação lendo um frame por vez do disco — evita OutOfMemoryError
+
     public void playAnimation() {
         int total = contarFrames();
         if (total == 0) return;
@@ -38,7 +38,7 @@ public class ImagePanel extends JPanel {
                     ((javax.swing.Timer) e.getSource()).stop();
                     return;
                 }
-                // Lê apenas o frame atual do disco e descarta o anterior
+
                 File f = new File(String.format("assets/frames/frame_%04d.png", idx[0]++));
                 try {
                     setImage(ImageIO.read(f));
@@ -49,7 +49,7 @@ public class ImagePanel extends JPanel {
         }).start();
     }
 
-    // Conta quantos frames existem sem carregá-los na memória
+
     private int contarFrames() {
         int count = 0;
         while (new File(String.format("assets/frames/frame_%04d.png", count)).exists()) {

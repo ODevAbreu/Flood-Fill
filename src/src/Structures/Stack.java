@@ -4,7 +4,7 @@ public class Stack<E> extends AbstractList<E> {
 
     public Stack() { super(); }
 
-    // Adiciona no topo (LIFO)
+
     @Override
     public void add(E element) {
         Node<E> newNode = new Node<>(element);
@@ -16,7 +16,7 @@ public class Stack<E> extends AbstractList<E> {
         size++;
     }
 
-    // Remove do topo
+
     @Override
     public E remove() {
         if (isEmpty()) throw new RuntimeException("Stack está vazia");

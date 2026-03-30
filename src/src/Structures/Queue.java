@@ -5,7 +5,7 @@ public class Queue<E> extends AbstractList<E> {
 
     public Queue() { super(); }
 
-    // Adiciona no fim (FIFO)
+
     @Override
     public void add(E element) {
         Node<E> newNode = new Node<>(element);
@@ -18,7 +18,7 @@ public class Queue<E> extends AbstractList<E> {
         size++;
     }
 
-    // Remove do início
+
     @Override
     public E remove() {
         if (isEmpty()) throw new RuntimeException("Queue está vazia");
